@@ -11,6 +11,10 @@ def home():
 @app.route("/report")
 def report():
     searchingword = request.args.get('searchingword')
+    if searchingword:
+        searchingword = searchingword.lower()
+    else:
+        return redirect("/")
     return render_template("report.html", word=searchingword)
 
 
